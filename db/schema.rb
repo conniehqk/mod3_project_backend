@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 2021_11_15_183948) do
   create_table "activities", force: :cascade do |t|
     t.string "name"
     t.integer "cost"
+    t.integer "duration"
     t.integer "day_id"
     t.index ["day_id"], name: "index_activities_on_day_id"
   end
