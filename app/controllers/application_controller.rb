@@ -27,4 +27,30 @@ class ApplicationController < Sinatra::Base
     trip.to_json
   end
 
+  post "/activities" do
+    a = Activity.create(
+      name: params[:name],
+      price: params[:price],
+      duration: params[:duration],
+      day: params[:day]
+    )
+    a.to_json
+  end
+
+  delete "/activities/:id" do
+    a = Activity.find(params[:id])
+    a.destroy
+    a.to_json
+  end
+
+  patch "/activities/:id" do
+    a = Activity.find(params[:id])
+    a.update(
+      name: params[:name],
+      price: params[:price],
+      duration: params[:duration],
+      day: params[:day]
+    )
+  end
+
 end
