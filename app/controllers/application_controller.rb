@@ -30,9 +30,9 @@ class ApplicationController < Sinatra::Base
   post "/activities" do
     a = Activity.create(
       name: params[:name],
-      price: params[:price],
+      cost: params[:cost],
       duration: params[:duration],
-      day: params[:day]
+      day_id: params[:day_id]
     )
     a.to_json
   end
