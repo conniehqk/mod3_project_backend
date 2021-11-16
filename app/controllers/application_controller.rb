@@ -12,7 +12,11 @@ class ApplicationController < Sinatra::Base
 
   get "/trips/:id" do
     t = Trip.find(params[:id])
-    t.to_json(include: { days: { include: :activities } })
+    # {"trip": t, "total": t.totalCost, "activities": t.activities}.to_json
+    tripVar = t.to_json(include: { days: { include: :activities } })
+    parsedTripVar = JSON.parse(tripVar)
+    parsedTripVar[:totalCost] = t.totalCost
+    parsedTripVar.to_json
   end
 
   post "/trips" do
@@ -52,5 +56,8 @@ class ApplicationController < Sinatra::Base
       day: params[:day]
     )
   end
+
+
+
 
 end
