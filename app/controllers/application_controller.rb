@@ -20,8 +20,8 @@ class ApplicationController < Sinatra::Base
       name: params[:name],
       participants: params[:participants],
       budget: params[:budget],
-      start_date: DateTime.new(params[:start_date].slice(0,4), params[:start_date].slice(5,7),params[:start_date].slice(8,10)),
-      end_date: DateTime.new(params[:end_date].slice(0,4), params[:end_date].slice(5,7),params[:end_date].slice(8,10))
+      start_date: Time.new(params[:start_date].slice(0,4), params[:start_date].slice(5,7),params[:start_date].slice(8,10)),
+      end_date: Time.new(params[:end_date].slice(0,4), params[:end_date].slice(5,7),params[:end_date].slice(8,10))
     )
     trip.genDays
     trip.to_json
