@@ -34,6 +34,14 @@ class ApplicationController < Sinatra::Base
     trip.to_json
   end
 
+  delete "/trips/:id" do
+    t = Trip.find(params[:id])
+    t.destroy
+    t.to_json
+  end
+
+
+
   post "/activities" do
     a = Activity.create(
       name: params[:name],
